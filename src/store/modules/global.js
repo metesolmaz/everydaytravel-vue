@@ -268,8 +268,13 @@ const actions = {
         try {
             const response = await axiosInstance.get(`tourdetails/all/${payload.tourId}/${payload.langIds}`)
             if (response.status === 200) {
-               
+                var ToursDetailJson;
+                response.data.forEach(function (ToursDetailItem) {
+                    ToursDetailItem.tourImage = JSON.parse(ToursDetailItem.tourImage);
+                    ToursDetailJson = ToursDetailItem.tourImage;
+                });
                 commit('setToursDetail', response.data)
+                commit('setToursDetailImageJson', ToursDetailJson)
             }
         } catch (error) {
             console.log(error)
@@ -313,7 +318,8 @@ const actions = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+
 
 }
 

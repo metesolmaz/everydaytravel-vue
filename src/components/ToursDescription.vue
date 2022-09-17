@@ -15,14 +15,14 @@
     <div class="container-fluid no-padding destination-details-section">
       <div class="section-padding"></div>
       <div class="container">
-        <div class="popular-destination2-block">
+        <div class="popular-destination2-block" >
           <ul id="lightSlider">
-            <li 
-            v-for="imageJson in getToursDetail" :key="imageJson.id" 
-            :data-thumb="getToursDetailImageJson['imageUrl']"
+            <li v-for="imageJson in getToursDetailImageJson" :key="imageJson.id" 
+            :data-thumb="imageJson['imageUrl']"   
             >
-            <img :src="getToursDetailImageJson['imageUrl']" alt="">
+            <img :src="imageJson['imageUrl']" alt="">
           </li>
+          
         </ul>
         </div>
         <div class="destination_details-content">
@@ -38,7 +38,9 @@
 </template>
 
 <style>
-
+li{
+  list-style: none;
+}
 </style>
 <script>
 
@@ -70,20 +72,19 @@ export default {
     this.$store.dispatch("getToursPageHandler", this.$route.params.id);
   },
   mounted(){
-    this.jqSlider();
+    this.jqsSlider();
   },
   methods:{
-    jqSlider(){
-      var jq = $.noConflict();
-      jq(function(){
-        jq('#lightSlider').lightSlider({
+    
+    jqsSlider(){
+      var j = jQuery.noConflict();
+      j('#lightSlider').lightSlider({
           gallery: true,
           item: 1,
           loop:true,
           slideMargin: 0,
           thumbItem: 4
-        });
-	    });
+      });
 	  }
   }
 };
