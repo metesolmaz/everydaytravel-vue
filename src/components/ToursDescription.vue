@@ -1,12 +1,15 @@
 <template >
-  <main class="site-main page-spacing">
     <!-- PageBanner -->
-    <div class="container-fluid no-padding"
+    <div>
+      <div class="container-fluid no-padding"
     :class="'pagebanner destinationdetails'"
     :style="{ 'background-image': 'url(' + getToursPage.tourHeaderImage + ')' }"
     >
-      <div class="container">
-        <h3>{{ getToursPage.tourHeader }}</h3>
+      <div class="container" >
+        <div v-for="gts in getAllToursDetail" :key="gts.id">
+          <h3 v-if="getToursPage.tourHeaderImage === gts.tourHeaderImage">{{ gts.tourHeader }}</h3>
+        </div>
+        
       </div>
     </div>
     <!-- PageBanner /- -->
@@ -15,26 +18,20 @@
     <div class="container-fluid no-padding destination-details-section">
       <div class="section-padding"></div>
       <div class="container">
-        <div class="popular-destination2-block" >
-          <ul id="lightSlider">
-            <li v-for="imageJson in getToursDetailImageJson" :key="imageJson.id" 
-            :data-thumb="imageJson['imageUrl']"   
-            >
-            <img :src="imageJson['imageUrl']" alt="">
-          </li>
-          
-        </ul>
-        </div>
+        <ToursDescriptionSlider />
         <div class="destination_details-content">
-          <p>
-            {{ getToursPage.tourContent }}
+          <div v-for="gts in getAllToursDetail" :key="gts.id">
+            <p v-if="getToursPage.tourHeaderImage === gts.tourHeaderImage">
+            {{ gts.tourContent }}
             
           </p>
+          </div>
+
         </div>
       </div>
-
     </div>
-  </main>
+    </div>
+    
 </template>
 
 <style>
@@ -48,12 +45,13 @@ li{
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";
 import Vue from "vue";
-import TourGallery from "./TourGallery.vue";
+import ToursDescriptionSlider from "./ToursDescriptionSlider.vue";
 Vue.prototype.$langGlobal = 1;
 export default {
   components:{
-    TourGallery
-  },
+    ToursDescriptionSlider,
+    ToursDescriptionSlider
+},
   data() {
     return {
       languid: 1,
@@ -61,7 +59,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getToursDetail", "getToursPage","getToursDetailImageJson"]),
+    ...mapGetters(["getToursDetail", "getToursPage","getAllToursDetail"]),
   },
   created() {
     Vue.prototype.$langGlobal = this.$langs;
@@ -70,22 +68,14 @@ export default {
       langIds: this.$langGlobal,
     });
     this.$store.dispatch("getToursPageHandler", this.$route.params.id);
+    this.$store.dispatch("getAllToursDetailHandler", this.$langGlobal);
   },
   mounted(){
-    this.jqsSlider();
-  },
-  methods:{
-    
-    jqsSlider(){
-      var j = jQuery.noConflict();
-      j('#lightSlider').lightSlider({
-          gallery: true,
-          item: 1,
-          loop:true,
-          slideMargin: 0,
-          thumbItem: 4
-      });
-	  }
+    EventBus.$on('button-was-clicked', langId => {
+      langId = { langId }
+      Vue.prototype.$langGlobal = langId['langId'];
+      this.$store.dispatch("getAllToursDetailHandler", this.$langGlobal);
+    });
   }
 };
 </script>

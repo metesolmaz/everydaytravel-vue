@@ -17,7 +17,6 @@
                 @click="langChange(lang.languageId)"
                 v-for="lang in getLanguages"
                 :key="lang.id"
-                align="right"
                 >
                 <span :class="'fi fi-' + lang.icon"></span>
               </button>
@@ -93,10 +92,9 @@
                 </button>
                 <a title="Logo" href="index.html" class="navbar-brand"></a>
                 <a href="index.html" class="mobile-logo" title="Logo"
-                  ><h3>Global</h3></a
+                  ><h3>Menu</h3></a
                 >
               </div>
-              <div class="navbar-collapse collapse" id="navbar" >
                 <ul class="nav navbar-nav">
                   <router-link
                     :to="`/${menu.url}`"
@@ -109,7 +107,7 @@
                     <a>{{ menu.name }}</a>
                   </router-link>
                 </ul>
-              </div>
+
             </div>
           </nav>
           <!-- Navigation /- -->

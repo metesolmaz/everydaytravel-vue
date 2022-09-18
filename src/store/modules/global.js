@@ -27,6 +27,7 @@ const state = {
     toursPage:[],
     isPopular : [],
     toursDetailImageJson: [],
+    allToursDetail: [],
 }
 const getters = {
     getCallout: state => state.callout,
@@ -50,6 +51,8 @@ const getters = {
     getToursPage: state => state.toursPage,
     getIsPopular: state => state.isPopular,
     getToursDetailImageJson: state => state.toursDetailImageJson,
+    getAllToursDetail: state => state.allToursDetail,
+
 
 }
 const mutations = {
@@ -115,6 +118,9 @@ const mutations = {
     },
     setToursDetailImageJson(state, payload) {
         state.toursDetailImageJson = payload
+    },
+    setAllToursDetail(state, payload) {
+        state.allToursDetail = payload
     },
 
 
@@ -268,13 +274,24 @@ const actions = {
         try {
             const response = await axiosInstance.get(`tourdetails/all/${payload.tourId}/${payload.langIds}`)
             if (response.status === 200) {
+                commit('setToursDetail', response.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    async getAllToursDetailHandler({ commit },payload) {
+        try {
+            const response = await axiosInstance.get(`tourdetails/all/${payload}`)
+            if (response.status === 200) {
                 var ToursDetailJson;
                 response.data.forEach(function (ToursDetailItem) {
                     ToursDetailItem.tourImage = JSON.parse(ToursDetailItem.tourImage);
                     ToursDetailJson = ToursDetailItem.tourImage;
                 });
-                commit('setToursDetail', response.data)
                 commit('setToursDetailImageJson', ToursDetailJson)
+                commit('setAllToursDetail', response.data)
+                console.log(ToursDetailJson)
             }
         } catch (error) {
             console.log(error)
