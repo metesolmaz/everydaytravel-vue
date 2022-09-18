@@ -12,17 +12,12 @@
 
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6" align="right">
-<<<<<<< HEAD
               <button
                 style="background-color: transparent; border: none"
                 @click="langChange(lang.languageId)"
                 v-for="lang in getLanguages"
                 :key="lang.id"
                 >
-=======
-              <button style="background-color: transparent; border: none" @click="langChange(lang.languageId)"
-                v-for="lang in getLanguages" :key="lang.id" align="right">
->>>>>>> cb758cf0279c3f9676d92a30e53b878e91109d97
                 <span :class="'fi fi-' + lang.icon"></span>
               </button>
             </div>
