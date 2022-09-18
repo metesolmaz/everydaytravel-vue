@@ -4,21 +4,16 @@
     <div id="slidepanel" v-for="mb of getMidBanners" :key="mb.id">
       <!-- Top Header -->
 
-      <div class="header-top container-fluid no-padding" >
-        <div class="container"  >
-          <div class="row" >
+      <div class="header-top container-fluid no-padding">
+        <div class="container">
+          <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-6">
               <span style="float:left;">{{ mb.bannerText }}</span>
-               
+
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6" align="right">
-              <button
-                style="background-color: transparent; border: none"
-                @click="langChange(lang.languageId)"
-                v-for="lang in getLanguages"
-                :key="lang.id"
-                align="right"
-                >
+              <button style="background-color: transparent; border: none" @click="langChange(lang.languageId)"
+                v-for="lang in getLanguages" :key="lang.id" align="right">
                 <span :class="'fi fi-' + lang.icon"></span>
               </button>
             </div>
@@ -46,10 +41,10 @@
                 <span :class="'icon icon-' + mb.icons"></span>
                 <p>
                   <a :href="'tel:' + mb.phone" :title="mb.phone">{{
-                    mb.phone
+                  mb.phone
                   }}</a>
                   <a :href="'mailto:' + mb.mail" :title="mb.mail">{{
-                    mb.mail
+                  mb.mail
                   }}</a>
                 </p>
               </div>
@@ -68,44 +63,28 @@
           <nav class="navbar ow-navigation">
             <div id="loginpanel" class="desktop-hide">
               <div class="right" id="toggle">
-                <a id="slideit" href="#slidepanel"
-                  ><i class="fo-icons fa fa-inbox"></i
-                ></a>
-                <a id="closeit" href="#slidepanel"
-                  ><i class="fo-icons fa fa-close"></i
-                ></a>
+                <a id="slideit" href="#slidepanel"><i class="fo-icons fa fa-inbox"></i></a>
+                <a id="closeit" href="#slidepanel"><i class="fo-icons fa fa-close"></i></a>
               </div>
             </div>
             <div class="col-md-9">
               <div class="navbar-header">
-                <button
-                  aria-controls="navbar"
-                  aria-expanded="false"
-                  data-target="#navbar"
-                  data-toggle="collapse"
-                  class="navbar-toggle collapsed"
-                  type="button"
-                >
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                  class="navbar-toggle collapsed" type="button">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a title="Logo" href="index.html" class="navbar-brand"></a>
-                <a href="index.html" class="mobile-logo" title="Logo"
-                  ><h3>Global</h3></a
-                >
+                <a title="Logo" href="/" class="navbar-brand"></a>
+                <a href="/" class="mobile-logo" title="Logo">
+                  <h3>Global</h3>
+                </a>
               </div>
-              <div class="navbar-collapse collapse" id="navbar" >
-                <ul class="nav navbar-nav">
-                  <router-link
-                    :to="`/${menu.url}`"
-                    :title="menu.name"
-                    tag="li"
-                    :class="{ active: menu.url === $route.name }"
-                    v-for="(menu, index) of getMenus"
-                    :key="index"
-                  >
+              <div  class="navbar-collapse collapse" id="navbar" >
+                <ul class="nav navbar-nav" >
+                  <router-link :to="`/${menu.url}`" :title="menu.name" tag="li"
+                    :class="{ active: menu.url === $route.name }" v-for="(menu, index) of getMenus" :key="index" dir="rtl">
                     <a>{{ menu.name }}</a>
                   </router-link>
                 </ul>
@@ -148,9 +127,9 @@ export default {
       "getLanguages",
     ]),
   },
-  methods:{
+  methods: {
     langChange(langId) {
-      
+
       this.$store.getters.getLanguages.forEach(
         function (langItem) {
           langId = langItem.languageId;
@@ -160,9 +139,9 @@ export default {
         this.$store.dispatch("getMidBannersHandler", langId),
         EventBus.$emit('button-was-clicked', langId),
       );
-  },
+    },
   }
-  
+
 };
 </script>
 
