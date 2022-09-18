@@ -87,7 +87,7 @@
                 </button>
                 <a title="Logo" href="index.html" class="navbar-brand"></a>
                 <a href="index.html" class="mobile-logo" title="Logo"
-                  ><h3>Menu</h3></a
+                  ><h3> Menu </h3></a
                 >
               </div>
                 <ul class="nav navbar-nav">
