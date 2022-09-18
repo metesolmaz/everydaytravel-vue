@@ -85,7 +85,6 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-<<<<<<< HEAD
                 <a title="Logo" href="index.html" class="navbar-brand"></a>
                 <a href="index.html" class="mobile-logo" title="Logo"
                   ><h3>Menu</h3></a
@@ -100,17 +99,6 @@
                     v-for="(menu, index) of getMenus"
                     :key="index"
                   >
-=======
-                <a title="Logo" href="/" class="navbar-brand"></a>
-                <a href="/" class="mobile-logo" title="Logo">
-                  <h3>Global</h3>
-                </a>
-              </div>
-              <div  class="navbar-collapse collapse" id="navbar" >
-                <ul class="nav navbar-nav" >
-                  <router-link :to="`/${menu.url}`" :title="menu.name" tag="li"
-                    :class="{ active: menu.url === $route.name }" v-for="(menu, index) of getMenus" :key="index" dir="rtl">
->>>>>>> cb758cf0279c3f9676d92a30e53b878e91109d97
                     <a>{{ menu.name }}</a>
                   </router-link>
                 </ul>
