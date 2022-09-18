@@ -18,7 +18,21 @@
     <div class="container-fluid no-padding destination-details-section">
       <div class="section-padding"></div>
       <div class="container">
-        <ToursDescriptionSlider />
+        <div class="popular-destination2-block" >
+          <div>
+            <ul id="lightSlider" >
+              <li  
+              v-for="imageJson in getToursDetailImageJson" :key="imageJson.id"
+              :data-thumb="imageJson['imageUrl']"
+              >
+                <img :src="imageJson['imageUrl']" alt="">
+              </li>
+
+
+          </ul>
+          </div>
+
+        </div>
         <div class="destination_details-content">
           <div v-for="gts in getAllToursDetail" :key="gts.id">
             <p v-if="getToursPage.tourHeaderImage === gts.tourHeaderImage">
@@ -50,7 +64,6 @@ Vue.prototype.$langGlobal = 1;
 export default {
   components:{
     ToursDescriptionSlider,
-    ToursDescriptionSlider
 },
   data() {
     return {
@@ -59,7 +72,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getToursDetail", "getToursPage","getAllToursDetail"]),
+    ...mapGetters(["getToursDetail", "getToursPage","getAllToursDetail","getToursDetailImageJson"]),
   },
   created() {
     Vue.prototype.$langGlobal = this.$langs;
@@ -69,6 +82,7 @@ export default {
     });
     this.$store.dispatch("getToursPageHandler", this.$route.params.id);
     this.$store.dispatch("getAllToursDetailHandler", this.$langGlobal);
+    this.jqsSlider();
   },
   mounted(){
     EventBus.$on('button-was-clicked', langId => {
@@ -76,6 +90,19 @@ export default {
       Vue.prototype.$langGlobal = langId['langId'];
       this.$store.dispatch("getAllToursDetailHandler", this.$langGlobal);
     });
+    this.jqsSlider();
+  },
+  methods:{
+    jqsSlider(){
+      var j = jQuery.noConflict();
+      j('#lightSlider').lightSlider({
+          gallery: true,
+          item: 1,
+          loop:true,
+          slideMargin: 0,
+          thumbItem: 4
+      });
+	  }
   }
 };
 </script>

@@ -1,13 +1,7 @@
 <template>
-    <div class="popular-destination2-block" >
-        <ul id="lightSlider">
-        <li v-for="imageJson in getToursDetailImageJson" :key="imageJson.id" 
-        :data-thumb="imageJson['imageUrl']"
-        >
-        <img :src="imageJson['imageUrl']" alt="">
-        </li>
-    </ul>
-    </div>
+  <div>
+    
+  </div>
 </template>
 
 <style>
@@ -30,16 +24,7 @@ export default {
     this.jqsSlider();
   },
   methods:{
-    jqsSlider(){
-      var j = jQuery.noConflict();
-      j('#lightSlider').lightSlider({
-          gallery: true,
-          item: 1,
-          loop:true,
-          slideMargin: 0,
-          thumbItem: 4
-      });
-	  }
+
   }
 };
 </script>

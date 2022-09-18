@@ -87,7 +87,7 @@ export default {
       Vue.prototype.$langGlobal = langId['langId'];
       this.$store.dispatch("getToursViewHandler", this.$langGlobal);
       this.$store.dispatch("getToursDetailHandler", {
-        tourId:   1,
+        tourId:   this.$route.params.id,
         langIds: this.$langGlobal
       });
       this.$store.dispatch("getMainToursHandler", this.$langGlobal);
