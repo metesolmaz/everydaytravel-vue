@@ -71,7 +71,7 @@
                 <a id="closeit" href="#slidepanel"><i class="fo-icons fa fa-close"></i></a>
               </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-12" dir="rtl">
               <div class="navbar-header">
                 <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
                   class="navbar-toggle collapsed" type="button">
@@ -108,7 +108,22 @@
   <!-- Header /- -->
 </template>
 
-
+<style>
+  .navbar-nav{
+    float: right!important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+.navbar-nav>li a{
+  width:auto;
+}
+.navbar-collapse.collapse{
+  display: block!important;
+  height: auto!important;
+  padding-bottom: 0;
+  }
+</style>
 <script>
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";

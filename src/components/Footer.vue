@@ -40,7 +40,16 @@
 							<nav class="navbar ow-navigation">
 								<div id="navbar2" class="navbar-collapse collapse">
 									<ul class="nav navbar-nav">
-										<li v-for="menu of getMenus" :key="menu.id"><a :href="menu.name" :title="menu.name">{{ menu.name }}</a></li>
+										<router-link
+										:to="`/${menu.url}`"
+										:title="menu.name"
+										tag="li"
+										:class="{ active: menu.url === $route.name }"
+										v-for="(menu, index) of getMenus"
+										:key="index"
+									>
+										<a>{{ menu.name }}</a>
+									</router-link>
 									</ul>
 								</div>
 							</nav>

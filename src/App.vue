@@ -1,5 +1,5 @@
 <template>
-    <div id="app" >
+    <div id="app">
       <NavBar />
       <transition name="page" mode="out-in">
         <router-view></router-view>
