@@ -122,6 +122,9 @@ const mutations = {
     setAllToursDetail(state, payload) {
         state.allToursDetail = payload
     },
+    setResetToursJson(state, payload) {
+        state.mainTours.toursJson = []
+    },
 }
 const actions = {
     async getMenusHandler({ commit }, payload) {
@@ -271,13 +274,8 @@ const actions = {
         try {
             const response = await axiosInstance.get(`tourdetails/all/${payload.tourId}/${payload.langIds}`)
             if (response.status === 200) {
-                var ToursDetailJson;
-                response.data.forEach(function (ToursDetailItem) {
-                    console.log(ToursDetailItem.tourImage = JSON.parse(ToursDetailItem.tourImage));
-                    ToursDetailJson = ToursDetailItem.tourImage;
-                });
                 commit('setToursDetail', response.data)
-                commit('setToursDetailImageJson', ToursDetailJson)
+
             }
         } catch (error) {
             console.log(error)
@@ -302,7 +300,7 @@ const actions = {
                 var dil = 1;
                 commit('setMainTours', response.data)
                 response.data.forEach(element => {
-                    dispatch('getToursDetailHandler', { tourId: element.id, langIds: 1 })
+                    dispatch('getToursDetailHandler', { tourId: element.id, langIds: dil })
                     EventBus.$on("button-was-clicked", (langId) => {
                         langId = { langId };
                         dil = langId["langId"];
@@ -318,7 +316,12 @@ const actions = {
         try {
             const response = await axiosInstance.get(`tourdetails/details/${payload}`)
             if (response.status === 200) {
+                
+                console.log(response.data)
+                var ToursDetailJson;
+                    ToursDetailJson = JSON.parse(response.data.tourImage);
                 commit('setToursPage', response.data)
+                commit('setToursDetailImageJson', ToursDetailJson)
             }
         } catch (error) {
             console.log(error)

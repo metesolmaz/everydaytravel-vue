@@ -420,7 +420,7 @@ select::-ms-expand {
 	margin-right: 0;
 }
 .header-middle .contactinfo-box > span {
-	color: #f3a316;
+	color: rgb(152, 32, 32);
 	position: absolute;
 	left: 0;
 	top: 10px;
@@ -453,7 +453,7 @@ select::-ms-expand {
 
 /* - MenuBlock */
 .menu-block{
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
 }
 
 /* - Menu:: Search */
@@ -461,7 +461,7 @@ select::-ms-expand {
 	float: right;
 	max-width: 242px;
 	position: relative;
-	background-color: #e69b14;
+	background-color: rgb(152, 32, 32);
 	padding-left: 7px;
 	padding-right: 7px;
 	margin-right: 15px;
@@ -476,7 +476,7 @@ select::-ms-expand {
 .menu-block  .menusearch .form-control{
 	border-radius: 0;
 	box-shadow: none;
-	background-color: #e69b14;
+	background-color: rgb(152, 32, 32);
 	border: none;
 	color: #fff;
 	font-size: 15px;
@@ -615,7 +615,7 @@ select::-ms-expand {
 	top: 0;
 	bottom: 0;
 	height: 0;
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
 	transition: all 1s ease 0s;
 	-webkit-transition: all 1s ease 0s;
 	-moz-transition: all 1s ease 0s;
@@ -644,7 +644,7 @@ select::-ms-expand {
 	word-wrap: break-word;
 }
 .footer-widgetblock .link_widget a:hover {
-	color: #f3a316;
+	color: rgb(152, 32, 32);
 	margin-left: 3px;
 }
 	
@@ -750,7 +750,7 @@ select::-ms-expand {
 	text-transform: uppercase;
 }
 .ftr-newsletter .input-group .btn {
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
 	text-decoration: none;
 	text-transform: uppercase;
 	font-size: 12px;
@@ -804,7 +804,7 @@ select::-ms-expand {
 	height: 0;
 }
 .footer-menu .ow-navigation .navbar-nav > li > a:hover {
-	color: #f3a316;
+	color: rgb(152, 32, 32);
 }
 
 /*------------------------------------------------------------------
@@ -831,7 +831,7 @@ select::-ms-expand {
 		position: absolute;
 		left: 0;
 		right: 0;
-		background-color: #f3a316;
+		background-color: rgb(152, 32, 32);
 		height: 1px;
 		display: inline-block;
 		top: -2px;
@@ -945,7 +945,7 @@ select::-ms-expand {
 	.text-logo:focus,
 	.text-logo:active,
 	.text-logo:hover {
-		color: #f7c51d;
+		color: rgb(152, 32, 32);
 		text-decoration: none;
 	}	
 	
@@ -1039,7 +1039,7 @@ select::-ms-expand {
 	
 	/* - Footer Menu */
 	.footer-menu .ow-navigation .navbar-toggle {
-		background-color: #f3a316;
+		background-color: rgb(152, 32, 32);
 	}
 	.footer-menu .ow-navigation .navbar-toggle:hover {
 		background-color: transparent;
@@ -1048,7 +1048,7 @@ select::-ms-expand {
 		margin-top: -45px;
 	}
 	.footer-menu .ow-navigation .navbar-nav {
-		border-color: #f3a316;
+		border-color: rgb(152, 32, 32);
 	}
 	.footer-menu .ow-navigation .navbar-nav > li > a {
 		color: #fff;

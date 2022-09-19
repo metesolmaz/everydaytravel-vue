@@ -59,34 +59,35 @@
       <!-- Middle Header /- -->
     </div>
     <!-- SidePanel /- -->
-
     <div class="menu-block">
-      <div class="container">
-        <div class="row">
-          <!-- Navigation -->
-          <nav class="navbar ow-navigation">
-            <div id="loginpanel" class="desktop-hide">
-              <div class="right" id="toggle">
-                <a id="slideit" href="#slidepanel"><i class="fo-icons fa fa-inbox"></i></a>
-                <a id="closeit" href="#slidepanel"><i class="fo-icons fa fa-close"></i></a>
-              </div>
-            </div>
-            <div class="col-md-12" dir="rtl">
-              <div class="navbar-header">
-                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
-                  class="navbar-toggle collapsed" type="button">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a title="Logo" href="index.html" class="navbar-brand"></a>
-                <a href="index.html" class="mobile-logo" title="Logo"
-                  ><h3> Menu </h3></a
-                >
-              </div>
-                <ul class="nav navbar-nav">
-                  <router-link
+		<div class="container">
+			<div class="row">
+				<!-- Navigation -->
+				<nav class="navbar ow-navigation">
+					<div id="loginpanel" class="desktop-hide">
+						<div class="right" id="toggle">
+							<a id="slideit" href="#slidepanel"><i class="fo-icons fa fa-inbox"></i></a>
+							<a id="closeit" href="#slidepanel"><i class="fo-icons fa fa-close"></i></a>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="navbar-header">
+							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+              
+              <a class="navbar-brand"></a>
+              <router-link :to="'/home'" alt="logo" height="90" width="300" title="logo">
+							    <a class="mobile-logo"><h3>Everyday Travel</h3></a>
+              </router-link>
+						
+						</div>
+						<div class="navbar-collapse collapse" id="navbar">
+							<ul class="nav navbar-nav">
+                <router-link
                     :to="`/${menu.url}`"
                     :title="menu.name"
                     tag="li"
@@ -96,33 +97,20 @@
                   >
                     <a>{{ menu.name }}</a>
                   </router-link>
-                </ul>
+							</ul>
+						</div>
+					</div>
+				</nav><!-- Navigation /- -->
+			</div>
+		</div>
+	</div>
 
-            </div>
-          </nav>
-          <!-- Navigation /- -->
-        </div>
-      </div>
-    </div>
   </header>
   <!-- Header /- -->
 </template>
 
 <style>
-  .navbar-nav{
-    float: right!important;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-.navbar-nav>li a{
-  width:auto;
-}
-.navbar-collapse.collapse{
-  display: block!important;
-  height: auto!important;
-  padding-bottom: 0;
-  }
+
 </style>
 <script>
 import { mapGetters } from "vuex";

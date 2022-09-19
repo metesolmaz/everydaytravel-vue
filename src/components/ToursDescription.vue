@@ -82,15 +82,19 @@ export default {
     });
     this.$store.dispatch("getToursPageHandler", this.$route.params.id);
     this.$store.dispatch("getAllToursDetailHandler", this.$langGlobal);
-    this.jqsSlider();
   },
   mounted(){
     EventBus.$on('button-was-clicked', langId => {
       langId = { langId }
       Vue.prototype.$langGlobal = langId['langId'];
+      this.$store.dispatch("getToursPageHandler", this.$route.params.id);
       this.$store.dispatch("getAllToursDetailHandler", this.$langGlobal);
     });
-    this.jqsSlider();
+  },
+  watch:{
+    getToursDetailImageJson(){
+      this.jqsSlider();
+    }
   },
   methods:{
     jqsSlider(){

@@ -72,17 +72,19 @@ export default {
     scrollToTop() {
     window.scrollTo(0,0);
     }
-
   },
+  beforeDestroy() {
+    this.$store.commit('setResetToursJson',[]);
+    },
   created() {
     Vue.prototype.$langGlobal = this.$langs;
     this.$store.dispatch("getToursViewHandler", this.$langGlobal);
     this.$store.dispatch("getAboutUsHandler", this.$langGlobal);
     this.$store.dispatch("getMainToursHandler", this.$langGlobal);
-
   },
   mounted() {
     EventBus.$on('button-was-clicked', langId => {
+      this.$store.commit('setResetToursJson',[]);
       langId = { langId }
       Vue.prototype.$langGlobal = langId['langId'];
       this.$store.dispatch("getToursViewHandler", this.$langGlobal);
@@ -91,7 +93,9 @@ export default {
         langIds: this.$langGlobal
       });
       this.$store.dispatch("getMainToursHandler", this.$langGlobal);
+
     });
-  }
+  },
+
 };
 </script>

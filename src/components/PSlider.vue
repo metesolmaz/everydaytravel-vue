@@ -3,7 +3,7 @@
 			<div id="photosliderslider" class="carousel slide" data-ride="carousel" >
 				<div class="carousel-inner" role="listbox" >
 					<div class="item" :class="{ active: index === 0 }" v-for="(s , index) in getSlider" :key="index" >
-						<img :src="s.imagePath" alt="photoslider1" width="1920" height="1000"/>
+						<img class="responsive" :src="s.imagePath" alt="photoslider1" width="1920" height="1000"  />
 						<div class="photosliderconent-block">
 							<img :src="s.imagePathLeft" alt="photoslider-left1" width="618" height="1016"/>
 							<div class="photoslidercontent-box">
@@ -35,6 +35,17 @@
 			</div>
 		</div>
 </template>
+<style>
+@media only screen and (max-width: 425px) {
+	.responsive {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	object-position: bottom;
+	}
+}
+
+</style>
 <script>
 import { mapGetters } from "vuex";
 import { EventBus } from '../services/event-bus.js';

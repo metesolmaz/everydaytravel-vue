@@ -324,9 +324,9 @@
 		margin: 4px 0 0;
 		letter-spacing: 0.9px;
 		font-family: 'Poppins', sans-serif;
-		font-size: 26px;
+		font-size: 22px;
 		text-transform: uppercase;
-		color: #222;
+		color: white;
 		display: inline-block;
 		transition: all 1s ease 0s;
 		-webkit-transition: all 1s ease 0s;
@@ -334,7 +334,7 @@
 		-o-transition: all 1s ease 0s;
 	}
 	.ow-navigation .mobile-logo h3:hover{
-		color: #fff;
+		color: rgb(67, 67, 67);
 	}
 	.ow-navigation .navbar-collapse {
         border-top: none;
