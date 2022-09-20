@@ -634,7 +634,7 @@ body.royal_loader {
 	font-family: "FontAwesome";
 }
 .booking-form a {
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
     border: 1px solid rgba(0, 0, 0, 0);
     color: #fff;
     display: inline-block;
@@ -962,7 +962,7 @@ body.royal_loader {
 	position: relative;
 }
 .popular_des2_content-block .book-now a {
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
     border-radius: 5px;
     color: #fff;
     display: inline-block;
@@ -1056,7 +1056,7 @@ body.royal_loader {
 	z-index: 2;
 }
 .slider-content {
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
 	padding: 40px 100px 50px 41px;
 }
 .slider-content h3 {
@@ -1315,7 +1315,7 @@ body.royal_loader {
 	transform-origin: left bottom 0;
 }
 .callout-section::after {
-	background-color: #0094d9;
+	background-color: #3B87BA;
     bottom: 0;
     content: "";
     display: inline-block;
@@ -1427,13 +1427,13 @@ body.royal_loader {
 	display: block;
 	font-size: 15px;
 	font-weight: 500;
-	color: #f3a316;
+	color: rgb(152, 32, 32);
 	text-transform: capitalize;
 	position: absolute;
 	right: 30px;
 }
 .testimonial-box span::before {
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
     content: "";
     height: 1px;
     left: -11px;
@@ -2775,7 +2775,7 @@ body.royal_loader {
 	min-height: 46px;
 	display: inline-block;
 	border-radius: 0;
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
 	border: none;
 	color: #fff;
 	font-size: 13px;

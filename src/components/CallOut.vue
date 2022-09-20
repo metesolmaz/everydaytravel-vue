@@ -9,11 +9,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-7 col-sm-7 col-xs-10">
-              <div
-                class="callout-content"
-                v-for="info of getMidBanners"
-                :key="info.id"
-              >
+              <div class="callout-content" v-for="info of getMidBanners" :key="info.id">
                 <h3>{{ cl.callOutTopText }}</h3>
                 <span>{{ cl.callOutBottomText }}</span>
                 <ul>
@@ -34,6 +30,19 @@
     </div>
   </div>
 </template>
+<style>
+.callout-section {
+  direction :ltr!important;
+}
+.callout-content h3 {
+  direction : rtl!important;
+  margin-right:90px;
+}
+.callout-content span {
+	direction : rtl!important;
+  margin-right:90px;
+}
+</style>
 <script>
 import { mapGetters } from "vuex";
 import { EventBus } from '../services/event-bus.js';

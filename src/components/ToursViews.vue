@@ -17,10 +17,10 @@
           </div>
           <div class="popular-destination-block">
             <div class="row">
-              <div v-for="bottomjs in getMainTours.toursJson" :key="bottomjs.id+1">
+              <div v-for="bottomjs in getMainTours.toursJson" :key="bottomjs.id">
                 <div class="col-md-4" v-if="bottomjs.tourId === mt.tourId" >
                 <figure class="imghvr-blur"
-                  style="margin-left: 35px; margin-top:35px;">
+                  style="margin-top:35px;">
                   <img :src="bottomjs.tourHeaderImage" width="400px" height="250px"/>
                   <figcaption>
                     <div>
@@ -88,10 +88,6 @@ export default {
       langId = { langId }
       Vue.prototype.$langGlobal = langId['langId'];
       this.$store.dispatch("getToursViewHandler", this.$langGlobal);
-      this.$store.dispatch("getToursDetailHandler", {
-        tourId:   this.$route.params.id,
-        langIds: this.$langGlobal
-      });
       this.$store.dispatch("getMainToursHandler", this.$langGlobal);
 
     });

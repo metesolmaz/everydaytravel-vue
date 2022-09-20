@@ -123,7 +123,7 @@ const mutations = {
         state.allToursDetail = payload
     },
     setResetToursJson(state, payload) {
-        state.mainTours.toursJson = []
+        state.mainTours.toursJson = [payload]
     },
 }
 const actions = {

@@ -21,8 +21,6 @@
                 <span :class="'fi fi-' + lang.icon"></span>
               </button>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -70,7 +68,7 @@
 							<a id="closeit" href="#slidepanel"><i class="fo-icons fa fa-close"></i></a>
 						</div>
 					</div>
-					<div class="col-md-9">
+					<div class="col-md-12">
 						<div class="navbar-header">
 							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
 								<span class="sr-only">Toggle navigation</span>
@@ -78,12 +76,10 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-              
               <a class="navbar-brand"></a>
               <router-link :to="'/home'" alt="logo" height="90" width="300" title="logo">
 							    <a class="mobile-logo"><h3>Everyday Travel</h3></a>
               </router-link>
-						
 						</div>
 						<div class="navbar-collapse collapse" id="navbar">
 							<ul class="nav navbar-nav">
@@ -109,9 +105,19 @@
   <!-- Header /- -->
 </template>
 
-<style>
-
+<style lang="less" scoped>
+.navbar-nav>li[class^="imghvr-"] {
+    float: right!important;
+}
+.navbar-collapse.collapse{
+  display: block!important;
+  height: auto!important;
+  padding-bottom: 0;
+  overflow: visible!important;
+  visibility: visible!important;
+  }
 </style>
+
 <script>
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";

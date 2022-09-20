@@ -42,11 +42,9 @@
 		display: none;
 	}
 	.ow-navigation .nav > li{
-		margin-right: 66px;
+		margin-right: 100px;
 	}
-	.ow-navigation .nav > li:last-of-type{
-		margin-right: 0;
-	}
+
 	.ow-navigation .navbar-nav > li > a{
 		color: #fff;
 		display: inline-block;

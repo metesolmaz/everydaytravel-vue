@@ -17,9 +17,7 @@
         <div class="section-padding"></div>
         <div class="row">
           <div class="col-md-6 contactus-left">
-            <!-- Map -->
-           <Map/>
-            <!-- Map /- -->
+
             <div class="row" v-for="(ct,index) in getContactUsViewJson" :key="index" style="margin-top:50px;">
               <div class="col-md-6 col-sm-6 col-xs-6 office-add">
                 <h3 class="block-title">{{contact.adressHeader}}</h3>
@@ -131,9 +129,6 @@ export default {
     return {
       
     };
-  },
-  components: {
-    Map
   },
   computed: {
     ...mapGetters([
