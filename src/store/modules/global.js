@@ -285,9 +285,7 @@ const actions = {
         try {
             const response = await axiosInstance.get(`tourdetails/all/${payload}`)
             if (response.status === 200) {
-                
                 commit('setAllToursDetail', response.data)
-
             }
         } catch (error) {
             console.log(error)
@@ -316,8 +314,6 @@ const actions = {
         try {
             const response = await axiosInstance.get(`tourdetails/details/${payload}`)
             if (response.status === 200) {
-                
-                console.log(response.data)
                 var ToursDetailJson;
                     ToursDetailJson = JSON.parse(response.data.tourImage);
                 commit('setToursPage', response.data)

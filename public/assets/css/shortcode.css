@@ -1781,6 +1781,8 @@ body.royal_loader {
 	background-size: cover;
 	position: relative;
 	min-height: 590px;
+	
+	direction:ltr!important;
 }
 .feature-section::before {
 	background-color: rgba(0, 0, 0, 0.9);
@@ -1792,12 +1794,14 @@ body.royal_loader {
 	right: 0;
 	top: 0;
 	width: 18.5%;
+	direction:ltr!important;
 }
 .featurecontent-block {
 	background-color: rgba(0, 0, 0, 0.9);
 	padding-top: 152px;
 	padding-bottom: 88px;
 	width: 78.1%;
+	height:600px!important;
 }
 .featurecontent-block .feature-box:nth-child(2n) {
 	margin-right: 0;

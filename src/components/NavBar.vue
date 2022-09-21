@@ -105,20 +105,12 @@
   <!-- Header /- -->
 </template>
 
-<style lang="less" scoped>
-.navbar-nav>li[class^="imghvr-"] {
-    float: right!important;
-}
-.navbar-collapse.collapse{
-  display: block!important;
-  height: auto!important;
-  padding-bottom: 0;
-  overflow: visible!important;
-  visibility: visible!important;
-  }
+<style>
+
 </style>
 
 <script>
+
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";
 import Vue from "vue";
@@ -147,7 +139,6 @@ export default {
   },
   methods: {
     langChange(langId) {
-
       this.$store.getters.getLanguages.forEach(
         function (langItem) {
           langId = langItem.languageId;
@@ -157,6 +148,34 @@ export default {
         this.$store.dispatch("getMidBannersHandler", langId),
         EventBus.$emit('button-was-clicked', langId),
       );
+      if(this.$langs === 3) {
+          const style = document.createElement('style');
+          style.innerHTML = `
+          .navbar-nav>li {
+          float: right!important;
+          }
+          .navbar-collapse.collapse{
+            float: right!important;
+          }
+          .ftr-widget .widget-title::after{
+            right:0!important;
+          }
+          `;
+          document.head.appendChild(style);
+        }
+        else{
+          const style = document.createElement('style');
+          style.innerHTML = `
+          .navbar-nav>li {
+            float: left!important;
+          }
+          .navbar-collapse.collapse{
+            float: left!important;
+          }
+
+          `;
+          document.head.appendChild(style);
+        }
     },
   }
 

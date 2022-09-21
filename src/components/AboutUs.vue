@@ -91,27 +91,9 @@
         </div>
       </div>
       <!-- Feature Section /- -->
-      <br /><br /><br /><br />
+
       <!-- Partner Section -->
-      <div class="container partner-section">
-        <div class="section-header">
-          <h3>{{ about.bottomHeader }}</h3>
-          <span>{{ about.bottomContent }}</span>
-        </div>
-        <div class="partner-carousel">
-
-          <figure class="imghvr-blur" v-for="bottomjs in getAboutUsBottomJsons" :key="bottomjs.id" style="margin-left:40px;">
-          <img :src="bottomjs['imageUrl']">
-          <figcaption>
-            <h3>Daily Tours</h3>
-          </figcaption>
-          <a href="#"></a>
-        </figure>
-        </div>
-
-
-        <div class="section-padding"></div>
-      </div>
+      <Reviews />
       <!-- Partner Section /- -->
 
       <!-- CallOut -->
@@ -126,11 +108,13 @@
 import CallOut from "./CallOut.vue";
 import { mapGetters } from "vuex";
 import { EventBus } from '../services/event-bus.js';
+import Reviews from "./Reviews.vue";
 
 export default {
   components: {
     CallOut,
-  },
+    Reviews
+},
   data(){
     return{
       langId: 1

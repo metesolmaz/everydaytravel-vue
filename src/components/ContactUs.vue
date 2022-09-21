@@ -118,7 +118,6 @@
 <script>
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";
-import Map from "./Maps.vue";
 
 
 
