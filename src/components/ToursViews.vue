@@ -51,12 +51,6 @@ import { EventBus } from '../services/event-bus.js';
 import Vue from 'vue';
 Vue.prototype.$langGlobal = 1;
 export default {
-  data() {
-    return {
-      languid: 1,
-      turId: 1
-    }
-  },
   computed: {
     ...mapGetters([
       "getToursView",
@@ -73,9 +67,6 @@ export default {
     window.scrollTo(0,0);
     }
   },
-  beforeDestroy() {
-    this.$store.commit('setResetToursJson',[]);
-    },
   created() {
     Vue.prototype.$langGlobal = this.$langs;
     this.$store.dispatch("getToursViewHandler", this.$langGlobal);
@@ -89,9 +80,12 @@ export default {
       Vue.prototype.$langGlobal = langId['langId'];
       this.$store.dispatch("getToursViewHandler", this.$langGlobal);
       this.$store.dispatch("getMainToursHandler", this.$langGlobal);
-
     });
   },
+  beforeDestroy() {
+    this.$store.commit('setResetToursJson',[]);
+    },
+  
 
 };
 </script>

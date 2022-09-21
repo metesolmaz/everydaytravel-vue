@@ -17,15 +17,7 @@
 						<h3 class="widget-title" v-html="footer.footerMidTitle"></h3>
 						 <p v-for="(oj,index) in getFooterJsons" :key="index" v-html="oj['day'] + oj['hour']"></p>
 					</aside>
-					 <aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget populardestination_widget">
-						<h3 class="widget-title" v-html="footer.footerRightTitle"></h3>
-						<ul>
-							<li><a title="instagram" href="#"><img width="130" height="130" alt="destinaion1" src="../assets/images/ftr-populardestinaion1.jpg"></a></li>
-							<li><a title="instagram" href="#"><img width="130" height="130" alt="destinaion1" src="../assets/images/ftr-populardestinaion2.jpg"></a></li>
-							<li><a title="instagram" href="#"><img width="130" height="130" alt="destinaion1" src="../assets/images/ftr-populardestinaion3.jpg"></a></li>
-							<li><a title="instagram" href="#"><img width="130" height="130" alt="destinaion1" src="../assets/images/ftr-populardestinaion4.jpg"></a></li>
-						</ul>	
-					</aside>
+
 				</div>
 			</div>
 		</div>
@@ -39,7 +31,7 @@
 						<div class="footer-menu">
 							<nav class="navbar ow-navigation">
 								<div id="navbar2" class="navbar-collapse collapse">
-									<ul class="nav navbar-nav">
+									<ul class="nav navbar-nav ">
 										<router-link
 										:to="`/${menu.url}`"
 										:title="menu.name"
@@ -60,6 +52,7 @@
 		</div>
 	</footer>
 </template>
+
 <script>
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";

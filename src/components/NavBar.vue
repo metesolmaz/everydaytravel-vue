@@ -7,12 +7,10 @@
       <div class="header-top container-fluid no-padding">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-6">
-              <span style="float:left;">{{ mb.bannerText }}</span>
-
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-6" align="right">
-              <button
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <span style="position: relative;">{{ mb.bannerText }}</span>
+              <div class="col-lg-2" align="right">
+                <button
                 style="background-color: transparent; border: none"
                 @click="langChange(lang.languageId)"
                 v-for="lang in getLanguages"
@@ -20,6 +18,8 @@
                 >
                 <span :class="'fi fi-' + lang.icon"></span>
               </button>
+              </div>
+
             </div>
           </div>
         </div>
@@ -106,7 +106,10 @@
 </template>
 
 <style>
-
+.col-lg-2{
+  position: relative;
+  float:right;
+}
 </style>
 
 <script>
@@ -152,13 +155,25 @@ export default {
           const style = document.createElement('style');
           style.innerHTML = `
           .navbar-nav>li {
-          float: right!important;
+            float: right!important;
+            
+          }
+          .navbar-nav>li:first-child {
+            margin-right:-11px!important;
+            
           }
           .navbar-collapse.collapse{
             float: right!important;
+
           }
           .ftr-widget .widget-title::after{
             right:0!important;
+          }
+          .header-top span{
+            float: right!important;
+          }
+          .col-lg-2{
+            float:left!important;
           }
           `;
           document.head.appendChild(style);
@@ -171,8 +186,17 @@ export default {
           }
           .navbar-collapse.collapse{
             float: left!important;
+            margin-left:0px!important;
           }
-
+          .header-top span{
+            float: left!important;
+          }
+          .col-lg-2{
+            float:right!important;
+          }
+          .navbar-nav>li:first-child {
+            margin-right:100px!important;
+          }
           `;
           document.head.appendChild(style);
         }

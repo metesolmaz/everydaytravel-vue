@@ -1,5 +1,5 @@
 <template>
-	<div class="container-fluid no-padding photoslider">
+	<div class="container-fluid no-padding photoslider" >
 			<div id="photosliderslider" class="carousel slide" data-ride="carousel" >
 				<div class="carousel-inner" role="listbox" >
 					<div class="item" :class="{ active: index === 0 }" v-for="(s , index) in getSlider" :key="index" >
@@ -18,7 +18,7 @@
 						</div>
 					</div>
 				</div>
-				<ol class="carousel-indicators">
+				<ol class="carousel-indicators" style="direction:ltr!important">
 					<li data-target="#photosliderslider" data-slide-to="0" class="active">
 						<span>Go</span>
 						<img src="../assets/images/photoslider-ic1.png" width="44" height="24" alt="photoslider-ic1"/>

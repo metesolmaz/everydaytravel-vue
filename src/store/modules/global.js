@@ -123,7 +123,7 @@ const mutations = {
         state.allToursDetail = payload
     },
     setResetToursJson(state, payload) {
-        state.mainTours.toursJson = [payload]
+        state.mainTours.toursJson = []
     },
 }
 const actions = {
@@ -301,6 +301,7 @@ const actions = {
                     dispatch('getToursDetailHandler', { tourId: element.id, langIds: dil })
                     EventBus.$on("button-was-clicked", (langId) => {
                         langId = { langId };
+                        console.log("event bus içi lang ıd : " + langId["langId"])
                         dil = langId["langId"];
                         dispatch('getToursDetailHandler', { tourId: element.id, langIds: dil })
                       });

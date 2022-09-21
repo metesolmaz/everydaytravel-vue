@@ -93,7 +93,16 @@
       <!-- Feature Section /- -->
 
       <!-- Partner Section -->
-      <Reviews />
+      <div class="container partner-section" style="margin-top:130px;">
+        <div class="section-header">
+          <h3>{{ about.bottomHeader }}</h3>
+          <span>{{ about.bottomContent }}</span>
+        </div>
+          <Reviews />
+
+
+        <div class="section-padding"></div>
+      </div>
       <!-- Partner Section /- -->
 
       <!-- CallOut -->

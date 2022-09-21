@@ -332,7 +332,7 @@ select::-ms-expand {
 }
 .header-top  span{
 	color: #fff;
-	display: inline-block;	
+	display: flex;	
     font-family: 'Work Sans', sans-serif;
     font-size: 13px;
     font-weight: 500;
@@ -340,6 +340,7 @@ select::-ms-expand {
 	padding-top: 5px;
 	padding-bottom: 9px;
     text-transform: uppercase;
+	float: left!important;
 }
 .header-top ul {
 	text-align: right;
@@ -791,10 +792,7 @@ select::-ms-expand {
 	float: right;
 }
 .footer-menu .ow-navigation .nav > li {
-	margin-right: 43px;
-}
-.footer-menu .ow-navigation .nav > li:last-of-type {
-	margin-right: 0;
+	margin-right: 40px;
 }
 .footer-menu .ow-navigation .navbar-nav > li > a {
 	font-weight: 400;

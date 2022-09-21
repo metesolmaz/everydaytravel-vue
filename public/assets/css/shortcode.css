@@ -334,6 +334,7 @@ body.royal_loader {
 	font-size: 16px;
 	line-height: 28px;
 	color: #fffffe;
+
 }
 
 /* - PhotoSlider: Carousle Control Setting */
@@ -405,9 +406,11 @@ body.royal_loader {
 	-o-transition: all 1s ease 0s;
 	display: none;
 	line-height: 87px;
+	direction:ltr!important;
 }
 .photoslider .carousel-indicators li.active span {
 	display: block;
+	direction:ltr!important;
 }
 .photoslider .carousel-indicators .active > img {
 	position: absolute;
@@ -1297,6 +1300,7 @@ body.royal_loader {
 	position: relative;
 	min-height: 250px;	
 	margin-top:30px;
+	direction:ltr!important;
 }
 .callout-section::before {
 	position: absolute;
@@ -1353,6 +1357,14 @@ body.royal_loader {
 	line-height: 26px;
 	text-transform: capitalize;
 }
+.callout-content h6 {
+	color: rgb(173, 173, 173);
+	  font-size: 18px;
+	  font-weight: 500;
+	  letter-spacing: 0.36px;
+	  line-height: 26px;
+	  text-transform: capitalize;
+  }
 .callout-content ul {
 	padding-left: 0;
 	margin-top: 40px;
@@ -1373,7 +1385,7 @@ body.royal_loader {
 }
 .callout-content ul li a {
 	color: #fff;
-	font-size: 23px;
+	font-size: 18px;
 	letter-spacing: 0.46px;
 	line-height: 26px;
 	font-weight: 500;
@@ -1762,7 +1774,7 @@ body.royal_loader {
 }
 .tourinfo-content .tourinfo-img {
 	position: relative;
-	background-color: #f3a316;
+	background-color: rgb(152, 32, 32);
 	display: inline-block;
 }
 .tourinfo-content .tourinfo-img img {
@@ -1803,6 +1815,11 @@ body.royal_loader {
 	width: 78.1%;
 	height:600px!important;
 }
+@media only screen and (max-width: 425px) {
+	.featurecontent-block  {
+		height:800px!important;
+	}
+  }
 .featurecontent-block .feature-box:nth-child(2n) {
 	margin-right: 0;
 }
@@ -1815,14 +1832,14 @@ body.royal_loader {
     z-index: 1;
 }
 .feature-box span {
-	color: #f3a316;
+	color:rgb(152, 32, 32);
 	position: absolute;
 	left: 0;
 	top: 0;
 	font-size: 30px;
 }
 .feature-box h3 {
-	color: #f3a316;
+	color: rgb(152, 32, 32);
 	font-size: 16px;
 	text-transform: uppercase;
 	margin: 0 0 13px;
