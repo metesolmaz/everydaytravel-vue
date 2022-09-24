@@ -54,17 +54,14 @@ li{
 }
 </style>
 <script>
-
+  
   
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";
 import Vue from "vue";
-import ToursDescriptionSlider from "./ToursDescriptionSlider.vue";
 Vue.prototype.$langGlobal = 1;
 export default {
-  components:{
-    ToursDescriptionSlider,
-},
+
   data() {
     return {
       languid: 1,
@@ -91,22 +88,6 @@ export default {
       this.$store.dispatch("getAllToursDetailHandler", this.$langGlobal);
     });
   },
-  watch:{
-    getToursDetailImageJson(){
-      this.jqsSlider();
-    }
-  },
-  methods:{
-    jqsSlider(){
-      var j = jQuery.noConflict();
-      j('#lightSlider').lightSlider({
-          gallery: true,
-          item: 1,
-          loop:true,
-          slideMargin: 0,
-          thumbItem: 4
-      });
-	  }
-  }
+
 };
 </script>

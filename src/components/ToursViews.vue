@@ -18,7 +18,7 @@
           <div class="popular-destination-block">
             <div class="row">
               <div v-for="bottomjs in getMainTours.toursJson" :key="bottomjs.id">
-                <div class="col-md-4" v-if="bottomjs.tourId === mt.tourId" >
+                <div class="col-md-4" v-if="bottomjs.tourId === mt.id" >
                 <figure class="imghvr-blur"
                   style="margin-top:35px;">
                   <img :src="bottomjs.tourHeaderImage" width="400px" height="250px"/>

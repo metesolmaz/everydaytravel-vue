@@ -10,7 +10,8 @@ const router = new VueRouter({
     mode: 'history',
     scrollBehavior() {
         document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
-    }
+    },
+    base: process.env.BASE_URL,
 })
 router.beforeEach((to, from, next) => {
     next()

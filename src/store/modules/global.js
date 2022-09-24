@@ -123,7 +123,7 @@ const mutations = {
         state.allToursDetail = payload
     },
     setResetToursJson(state, payload) {
-        state.mainTours.toursJson = []
+        state.mainTours.toursJson = payload
     },
 }
 const actions = {
@@ -275,7 +275,6 @@ const actions = {
             const response = await axiosInstance.get(`tourdetails/all/${payload.tourId}/${payload.langIds}`)
             if (response.status === 200) {
                 commit('setToursDetail', response.data)
-
             }
         } catch (error) {
             console.log(error)
@@ -295,16 +294,9 @@ const actions = {
         try {
             const response = await axiosInstance.get(`maintours/all/${payload}`)
             if (response.status === 200) {
-                var dil = 1;
                 commit('setMainTours', response.data)
                 response.data.forEach(element => {
-                    dispatch('getToursDetailHandler', { tourId: element.id, langIds: dil })
-                    EventBus.$on("button-was-clicked", (langId) => {
-                        langId = { langId };
-                        console.log("event bus içi lang ıd : " + langId["langId"])
-                        dil = langId["langId"];
-                        dispatch('getToursDetailHandler', { tourId: element.id, langIds: dil })
-                      });
+                    dispatch('getToursDetailHandler', { tourId: element.id, langIds: payload })
                 });
             }
         } catch (error) {
