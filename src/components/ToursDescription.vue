@@ -129,13 +129,11 @@ li {
 </style>
 <script>
 
-
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";
 import Vue from "vue";
 Vue.prototype.$langGlobal = 1;
 export default {
-
   data() {
     return {
       languid: 1,
@@ -146,6 +144,7 @@ export default {
     ...mapGetters(["getToursDetail", "getToursPage", "getAllToursDetail", "getToursDetailImageJson"]),
   },
   created() {
+    this.slidercalis();
     Vue.prototype.$langGlobal = this.$langs;
     this.$store.dispatch("getToursDetailHandler", {
       tourId: this.$route.params.id,
