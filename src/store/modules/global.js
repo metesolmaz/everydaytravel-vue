@@ -28,6 +28,7 @@ const state = {
     isPopular : [],
     toursDetailImageJson: [],
     allToursDetail: [],
+    toursviewJson : [],
 }
 const getters = {
     getCallout: state => state.callout,
@@ -52,6 +53,7 @@ const getters = {
     getIsPopular: state => state.isPopular,
     getToursDetailImageJson: state => state.toursDetailImageJson,
     getAllToursDetail: state => state.allToursDetail,
+    getToursViewJson: state => state.toursviewJson,
 
 
 }
@@ -124,6 +126,9 @@ const mutations = {
     },
     setResetToursJson(state, payload) {
         state.mainTours.toursJson = payload
+    },
+    setToursViewJson(state, payload) {
+        state.toursviewJson = payload
     },
 }
 const actions = {
@@ -264,7 +269,13 @@ const actions = {
         try {
             const response = await axiosInstance.get(`toursview/all/${payload}`)
             if (response.status === 200) {
+                    var ToursViewJson;
+                    response.data.forEach(function (ToursViewItems) {
+                        ToursViewItems.tourHeader = JSON.parse(ToursViewItems.tourHeader);
+                        ToursViewJson = ToursViewItems.tourHeader;
+                });
                 commit('setToursView', response.data)
+                commit('setToursViewJson', ToursViewJson)
             }
         } catch (error) {
             console.log(error)

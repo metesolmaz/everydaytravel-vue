@@ -1,6 +1,8 @@
 import Home from './components/Home.vue';
 import AboutUs from './components/AboutUs';
-import ToursViews from './components/ToursViews';
+import DailyToursViews from './components/DailyToursViews';
+import WeeklyToursViews from './components/WeeklyToursViews';
+import VipTurkey from './components/VipTurkeyViews';
 import ContactUs from './components/ContactUs';
 import ToursDescription from './components/ToursDescription';
 
@@ -32,12 +34,30 @@ export const routes = [
         },
     },
     {
-        path: '/tours',
-        component: ToursViews,
-        name: 'tours',
+        path: '/daily-tours',
+        component: DailyToursViews,
+        name: 'daily-tours',
         meta: {
             transition: 'slide-left',
-            name: 'Tours'
+            name: 'Daily Tours'
+        },
+    },
+    {
+        path: '/weekly-tours',
+        component: WeeklyToursViews,
+        name: 'weekly-tours',
+        meta: {
+            transition: 'slide-left',
+            name: 'Weekly Tours'
+        },
+    },
+    {
+        path: '/vip-turkey',
+        component: VipTurkey,
+        name: 'vip-turkey',
+        meta: {
+            transition: 'slide-left',
+            name: 'Vip Turkey Tours'
         },
     },
     {
