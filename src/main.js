@@ -16,6 +16,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     next()
     document.title = to.meta.name;
+    store.commit('setResetToursJson')
 });
 new Vue({
     store,

@@ -68,6 +68,7 @@ export default {
     }
   },
   created() {
+    this.$store.commit('setResetToursJson',[]);
     Vue.prototype.$langGlobal = this.$langs;
     this.$store.dispatch("getToursViewHandler", this.$langGlobal);
     this.$store.dispatch("getAboutUsHandler", this.$langGlobal);
