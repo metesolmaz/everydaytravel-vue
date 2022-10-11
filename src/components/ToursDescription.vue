@@ -46,7 +46,9 @@
         </div>
       </div>
     </div>
+    <CallOut />
   </div>
+  
 
 </template>
 
@@ -131,9 +133,13 @@ li {
 
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";
+import CallOut from "./CallOut.vue";
 import Vue from "vue";
 Vue.prototype.$langGlobal = 1;
 export default {
+  components: {
+    CallOut
+},
   data() {
     return {
       languid: 1,

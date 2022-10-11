@@ -5,6 +5,7 @@ import WeeklyToursViews from './components/WeeklyToursViews';
 import VipTurkey from './components/VipTurkeyViews';
 import ContactUs from './components/ContactUs';
 import ToursDescription from './components/ToursDescription';
+import Services from './components/Services';
 
 export const routes = [
     {
@@ -67,6 +68,15 @@ export const routes = [
         meta: {
             transition: 'slide-left',
             name : 'Tour Details'
+        },
+    },
+    {
+        path: '/services',
+        component: Services,
+        name: 'services',
+        meta: {
+            transition: 'slide-left',
+            name : 'Services'
         },
     },
     {

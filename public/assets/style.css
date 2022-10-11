@@ -592,9 +592,6 @@ select::-ms-expand {
 	display: inline-block;
 	margin-right: 4px;
 }
-.footer-widgetblock .about_widget ul li:last-of-type {
-	margin-right: 0;
-}
 .footer-widgetblock .about_widget ul li a {
 	width: 37px;
 	height: 37px;

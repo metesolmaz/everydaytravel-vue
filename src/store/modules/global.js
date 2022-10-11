@@ -29,6 +29,9 @@ const state = {
     toursDetailImageJson: [],
     allToursDetail: [],
     toursviewJson : [],
+    categories : [],
+    service : [],
+    serviceView : [],
 }
 const getters = {
     getCallout: state => state.callout,
@@ -54,6 +57,10 @@ const getters = {
     getToursDetailImageJson: state => state.toursDetailImageJson,
     getAllToursDetail: state => state.allToursDetail,
     getToursViewJson: state => state.toursviewJson,
+    getCategories: state => state.categories,
+    getService: state => state.service,
+    getServiceView: state => state.serviceView,
+
 
 
 }
@@ -107,7 +114,7 @@ const mutations = {
         state.toursView = payload
     },
     setToursDetail(state, payload) {
-        state.mainTours.toursJson = state.mainTours.toursJson.concat(payload)
+        state.mainTours.toursJson = payload
     },
     setMainTours(state, payload) {
         state.mainTours.tours = payload
@@ -130,6 +137,16 @@ const mutations = {
     setToursViewJson(state, payload) {
         state.toursviewJson = payload
     },
+    setCategories(state, payload) {
+        state.categories = payload
+    },
+    setService(state, payload) {
+        state.service = payload
+    },
+    setServiceView(state, payload) {
+        state.serviceView = payload
+    }
+
 }
 const actions = {
     async getMenusHandler({ commit }, payload) {
@@ -306,9 +323,7 @@ const actions = {
             const response = await axiosInstance.get(`maintours/all/${payload}`)
             if (response.status === 200) {
                 commit('setMainTours', response.data)
-                response.data.forEach(element => {
-                    dispatch('getToursDetailHandler', { tourId: element.id, langIds: payload })
-                });
+
             }
         } catch (error) {
             console.log(error)
@@ -337,8 +352,37 @@ const actions = {
             console.log(error)
         }
     },
-
-
+    async getCategoriesHandler({ commit , dispatch}, payload) {
+        try {
+            const response = await axiosInstance.get(`categories/${payload.id}`)
+            if (response.status === 200) {
+                commit('setCategories', response.data)
+                dispatch('getToursDetailHandler', { tourId: response.data.id, langIds: payload.langIds})
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    async getServiceHandler({ commit }, payload) {
+        try {
+            const response = await axiosInstance.get(`service/all/${payload}`)
+            if (response.status === 200) {
+                commit('setService', response.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }, 
+    async getServiceViewHandler({ commit }, payload) {
+        try {
+            const response = await axiosInstance.get(`serviceview/all/${payload}`)
+            if (response.status === 200) {
+                commit('setServiceView', response.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 

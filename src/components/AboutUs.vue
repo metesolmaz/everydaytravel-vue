@@ -98,7 +98,20 @@
           <h3>{{ about.bottomHeader }}</h3>
           <span>{{ about.bottomContent }}</span>
         </div>
-          <Reviews />
+        <div>
+          <div class="col-md-11 col-sm-6">
+            <div class="partner-box">
+              <a href="https://www.tursab.org.tr/tr/ddsv">            
+                <img v-for="gt in getAboutUsBottomJsons" :key="gt.id"
+                :src="gt['imageUrl']"
+                alt="partner"
+                width="165"
+                height="93"
+                style="margin-left:100px;margin-top:50px;margin-bottom:50px;"
+              /></a>
+            </div>
+          </div>
+        </div>
 
 
         <div class="section-padding"></div>
@@ -113,6 +126,7 @@
   </div>
   
 </template>
+
 <script>
 import CallOut from "./CallOut.vue";
 import { mapGetters } from "vuex";

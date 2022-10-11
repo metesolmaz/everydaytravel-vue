@@ -16,50 +16,63 @@
 
       <div class="container partner-section">
         <div class="section-padding"></div>
-        <div class="container" >
-          <div class="section-header" >
+        <div class="container" style="margin-bottom: 100px">
+          <div class="section-header">
             <h3 v-if="tourview.languageId === $langGlobal">
-            {{ getToursViewJson[0]["tour"] }}
-          </h3>
-        </div>
+              {{ getToursViewJson[0]["tour"] }}
+            </h3>
+          </div>
           <div class="popular-destination-block">
             <div class="row">
-              <div
-                v-for="bottomjs in getMainTours.toursJson"
-                :key="bottomjs.id"
-              >
-              <div v-for="mt in getMainTours.tours" :key="mt.id">
-                <div class="col-md-4"  v-if="bottomjs.tourId === mt.id">
-                  <figure class="imghvr-blur" style="margin-top: 35px">
-                    <img
-                      :src="bottomjs.tourHeaderImage"
-                      width="400px"
-                      height="250px"
-                    />
-                    <figcaption>
-                      <div>
-                        <router-link
-                          :to="`details/${bottomjs.id}`"
-                          @click="scrollToTop"
-                        >
-                          <h3>{{ bottomjs.tourHeader }}</h3>
-
-                        </router-link>
-
+              <div v-for="mtjson in getMainTours.toursJson" :key="mtjson.id">
+                  <div
+                    class="col-md-4"
+                    v-if="
+                      mtjson.tourId === getCategories.id &&
+                      mtjson.languageId === $langGlobal
+                    "
+                  >
+                    <figure class="imghvr-blur" style="margin-top: 35px">
+                      <img
+                        :src="mtjson.tourHeaderImage"
+                        width="400px"
+                        height="250px"
+                      />
+                      <figcaption>
+                        <div>
+                          <router-link
+                            :to="`details/${mtjson.id}`"
+                            @click="scrollToTop"
+                          >
+                            <h3
+                              class="ih-zoom-out"
+                              style="
+                                background-color: rgb(152, 32, 32);
+                                margin-top: 190px;
+                                text-decoration: none;
+                                font-family: 'Slabo 27px', serif;
+                              "
+                            >
+                              {{ mtjson.tourHeader }}
+                            </h3>
+                          </router-link>
+                        </div>
+                      </figcaption>
+                      <div :class="{ 'kurdele-alani': mtjson.ısVip === true }">
+                        <div
+                          :class="{ kurdele: mtjson.ısVip === true }"
+                          v-text="mtjson.ısVip === true ? 'Vip' : ''"
+                        ></div>
                       </div>
-                    </figcaption>
-                    <div class="kurdele-alani">
-                            <div class="kurdele">Vip</div>
-                          </div>
-                  </figure>
-                </div>
-              </div>
+                    </figure>
+                  </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <CallOut />
   </div>
 </template>
 
@@ -71,6 +84,7 @@
   position: absolute;
   top: -3px;
   right: -3px;
+  direction:ltr!important;
 }
 .kurdele {
   font: bold 13px Sans-Serif;
@@ -85,6 +99,7 @@
   padding: 7px 0;
   left: -5px;
   top: 15px;
+  direction:ltr!important;
   width: 120px;
   background-color: rgb(152, 32, 32);
   background-image: -webkit-gradient(
@@ -123,15 +138,20 @@
 <script>
 import { mapGetters } from "vuex";
 import { EventBus } from "../services/event-bus.js";
+import CallOut from "./CallOut.vue";
 import Vue from "vue";
 Vue.prototype.$langGlobal = 1;
 export default {
+  components:{
+    CallOut
+},
   computed: {
     ...mapGetters([
       "getToursView",
       "getToursDetail",
       "getMainTours",
       "getToursViewJson",
+      "getCategories",
     ]),
   },
   methods: {
@@ -140,23 +160,26 @@ export default {
     },
   },
   created() {
-    this.$store.commit("setResetToursJson", []);
     Vue.prototype.$langGlobal = this.$langs;
     this.$store.dispatch("getToursViewHandler", this.$langGlobal);
     this.$store.dispatch("getAboutUsHandler", this.$langGlobal);
     this.$store.dispatch("getMainToursHandler", this.$langGlobal);
+    this.$store.dispatch("getCategoriesHandler", {
+      id: 1,
+      langIds: this.$langGlobal,
+    });
   },
   mounted() {
     EventBus.$on("button-was-clicked", (langId) => {
-      this.$store.commit("setResetToursJson", []);
       langId = { langId };
       Vue.prototype.$langGlobal = langId["langId"];
       this.$store.dispatch("getToursViewHandler", this.$langGlobal);
       this.$store.dispatch("getMainToursHandler", this.$langGlobal);
+      this.$store.dispatch("getCategoriesHandler", {
+        id: 1,
+        langIds: this.$langGlobal,
+      });
     });
-  },
-  beforeDestroy() {
-    this.$store.commit("setResetToursJson", []);
   },
 };
 </script>

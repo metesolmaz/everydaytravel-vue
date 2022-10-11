@@ -16,7 +16,7 @@
 
       <div class="container partner-section">
         <div class="section-padding"></div>
-        <div class="container" >
+        <div class="container" style="margin-bottom:100px">
           <div class="section-header" >
             <h3 v-if="tourview.languageId === $langGlobal">
             {{ getToursViewJson[1]["tour"] }}
@@ -24,42 +24,38 @@
         </div>
           <div class="popular-destination-block">
             <div class="row">
-              <div
-                v-for="mtjs in getMainTours.toursJson"
-                :key="mtjs.id"
-              >
-              <div v-for="mt in getMainTours.tours" :key="mt.id">
-                <div class="col-md-4"  v-if="mtjs.tourId === mt.id">
-                  <figure class="imghvr-blur" style="margin-top: 35px">
+              <div v-for="mtjson in getMainTours.toursJson" :key="mtjson.id">
+                <div class="col-md-4" v-if="mtjson.tourId === getCategories.id && mtjson.languageId === $langGlobal">
+                  <figure class="imghvr-blur" style=" margin-top: 35px">
                     <img
-                      :src="mtjs.tourHeaderImage"
+                      :src="mtjson.tourHeaderImage"
                       width="400px"
                       height="250px"
                     />
                     <figcaption>
                       <div>
                         <router-link
-                          :to="`details/${mtjs.id}`"
+                          :to="`details/${mtjson.id}`"
                           @click="scrollToTop"
                         >
-                          <h3>{{ mtjs.tourHeader }}</h3>
+                        <h3 class="ih-zoom-out" style="background-color:rgb(152, 32, 32);margin-top:190px;text-decoration: none;font-family: 'Slabo 27px', serif;">{{ mtjson.tourHeader }}</h3>
 
                         </router-link>
 
                       </div>
                     </figcaption>
-                    <div class="kurdele-alani">
-                            <div class="kurdele">Vip</div>
+                    <div :class="{ 'kurdele-alani' : mtjson.ısVip === true}">
+                            <div :class="{ 'kurdele' : mtjson.ısVip === true}" v-text=" mtjson.ısVip === true ? 'Vip' : '' "></div>
                           </div>
                   </figure>
                 </div>
-              </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <CallOut />
   </div>
 </template>
 
@@ -71,45 +67,44 @@
 import { mapGetters } from "vuex";
 import { EventBus } from '../services/event-bus.js';
 import Vue from 'vue';
+import CallOut from "./CallOut.vue";
+
 Vue.prototype.$langGlobal = 1;
 export default {
-  computed: {
-    ...mapGetters([
-      "getToursView",
-      "getAboutUs",
-      "getAboutUsTopJsons",
-      "getAboutUsMidJsons",
-      "getAboutUsBottomJsons",
-      "getToursDetail",
-      "getMainTours",
-      "getToursViewJson"
-    ]),
-  },
-  methods: {
-    scrollToTop() {
-    window.scrollTo(0,0);
-    }
-  },
-  created() {
-    this.$store.commit('setResetToursJson',[]);
-    Vue.prototype.$langGlobal = this.$langs;
-    this.$store.dispatch("getToursViewHandler", this.$langGlobal);
-    this.$store.dispatch("getAboutUsHandler", this.$langGlobal);
-    this.$store.dispatch("getMainToursHandler", this.$langGlobal);
-  },
-  mounted() {
-    EventBus.$on('button-was-clicked', langId => {
-      this.$store.commit('setResetToursJson',[]);
-      langId = { langId }
-      Vue.prototype.$langGlobal = langId['langId'];
-      this.$store.dispatch("getToursViewHandler", this.$langGlobal);
-      this.$store.dispatch("getMainToursHandler", this.$langGlobal);
-    });
-  },
-  beforeDestroy() {
-    this.$store.commit('setResetToursJson',[]);
+    data() {
+        return {
+            weekid: 2,
+        };
     },
-  
-
+    computed: {
+        ...mapGetters([
+            "getToursView",
+            "getToursDetail",
+            "getMainTours",
+            "getToursViewJson",
+            "getCategories"
+        ]),
+    },
+    methods: {
+        scrollToTop() {
+            window.scrollTo(0, 0);
+        }
+    },
+    created() {
+        Vue.prototype.$langGlobal = this.$langs;
+        this.$store.dispatch("getToursViewHandler", this.$langGlobal);
+        this.$store.dispatch("getMainToursHandler", this.$langGlobal);
+        this.$store.dispatch("getCategoriesHandler", { id: 2, langIds: this.$langGlobal });
+    },
+    mounted() {
+        EventBus.$on("button-was-clicked", langId => {
+            langId = { langId };
+            Vue.prototype.$langGlobal = langId["langId"];
+            this.$store.dispatch("getToursViewHandler", this.$langGlobal);
+            this.$store.dispatch("getMainToursHandler", this.$langGlobal);
+            this.$store.dispatch("getCategoriesHandler", { id: 2, langIds: this.$langGlobal });
+        });
+    },
+    components: { CallOut }
 };
 </script>
